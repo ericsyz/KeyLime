@@ -9,8 +9,7 @@ import { AuthProvider } from './components/Authentication/AuthProvider';
 function App() {
   return (
     <ChakraProvider>
-      <Application></Application>
-      {/* <AuthProvider>
+      <AuthProvider>
         <BrowserRouter>
           <main>
             <div className="content">
@@ -22,7 +21,7 @@ function App() {
             </div>
           </main>
         </BrowserRouter>
-      </AuthProvider> */}
+      </AuthProvider>
     </ChakraProvider>
   );
 }
