@@ -1,5 +1,5 @@
 import './App.css';
-import { Account} from "./components/exportPages";
+import { Account, Dashboard } from "./components/exportPages";
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 
 import { ChakraProvider } from '@chakra-ui/react';
@@ -15,6 +15,7 @@ function App() {
               <Route path="/" element={<Landing />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Account />} />
+              <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
           </div>
         </main>
