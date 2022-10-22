@@ -21,10 +21,10 @@ export function NavigationBar() {
     return (
       <Box
         as="section"
-        pb={{
+        /*pb={{
           base: '12',
           md: '24',
-        }}
+        }}*/
       >
         <Box as="nav" bg="bg-surface" boxShadow={useColorModeValue('sm', 'sm-dark')}>
           <Container
@@ -38,7 +38,7 @@ export function NavigationBar() {
               {isDesktop ? (
                 <Flex justify="space-between" flex="1">
                   <ButtonGroup variant="link" spacing="8">
-                    {['Opt1', 'Opt2', 'Opt3', 'Opt4'].map((item) => (
+                    {['Explore', 'Opt2', 'Opt3', 'Action Center'].map((item) => (
                       <Button key={item}>{item}</Button>
                     ))}
                   </ButtonGroup>
