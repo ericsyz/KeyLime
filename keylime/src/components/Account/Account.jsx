@@ -26,6 +26,11 @@ export function Account(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    function register(e) {
+      e.preventDefault();
+      
+    }
+
     return (
         <ChakraProvider>
             <Container marginTop={40} color = 'green'>
