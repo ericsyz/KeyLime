@@ -1,6 +1,6 @@
 import './App.css';
-import { Account } from "./components/exportPages";
-import { BrowserRouter, HashRouter, NavLink, Route, Routes } from "react-router-dom";
+import { Account, Dashboard } from "./components/exportPages";
+import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 
 import { ChakraProvider } from '@chakra-ui/react';
 import { Landing, Login, NavigationBar } from './components/exportPages';
@@ -15,12 +15,12 @@ function App() {
               <Route path="/" element={<Landing />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Account />} />
+              <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
           </div>
         </main>
       </BrowserRouter>
     </ChakraProvider>
-
   );
 }
 
