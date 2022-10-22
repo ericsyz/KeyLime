@@ -1,6 +1,10 @@
 // Import the functions you need from the SDKs you need
+import { useRangeSlider } from "@chakra-ui/react";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { ref, set, getDatabase } from "firebase/database";
+
+import { createUserWithEmailAndPassword } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -17,5 +21,20 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+export const db = getDatabase(app);
 
+export const registerWithEmailAndPassword = async (name, birthday, email, password) => {
+  try {
+    const res = await createUserWithEmailAndPassword(auth, email, password);
+    const user = res.user;
+    set(ref(db, `/users/${user.uid}`), {
+      name: name,
+      birthday: birthday,
+      email: email
+    });
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+};
 export const auth = getAuth(app)
