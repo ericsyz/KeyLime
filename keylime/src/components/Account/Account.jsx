@@ -66,29 +66,6 @@ export function Account() {
       </VStack>
 
     </VStack>
-    // <ChakraProvider>
-    //   <form onSubmit={register}>
-    //     <Container marginTop={40} color='green'>
-    //       <Center textStyle='h2'>Welcome!</Center>
-    //       <FormControl isRequired>
-    //         <FormLabel>Email address</FormLabel>
-    //         <Input
-    //           type='email'
-    //           id="email"
-    //           value={email}
-    //           onChange={(e) => setEmail(e.target.value)}
-    //         />
-    //         <FormLabel>Password</FormLabel>
-    //         <Input type='password' />
-    //         <Button colorScheme='teal'
-    //           onClick={() => {
-
-    //           }}
-    //         >Submit</Button>
-    //       </FormControl>
-    //     </Container>
-    //   </form>
-    // </ChakraProvider>
   )
 
 }
