@@ -2,7 +2,7 @@ import { Box, Center, Image, Flex, Badge, Text, Button, Wrap } from "@chakra-ui/
 
 export function Leasing() {
   return (
-    <Center h="120vh">
+    <Center h="137vh">
       <Box colorScheme='red' p="5" maxW="5000px" borderWidth="5px">
       <Text as='b' fontSize='25px' >Villages of East Atlanta</Text>
       <Center>

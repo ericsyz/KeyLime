@@ -3,7 +3,7 @@ import { Account } from "./components/exportPages";
 import { BrowserRouter, HashRouter, NavLink, Route, Routes } from "react-router-dom";
 
 import { ChakraProvider } from '@chakra-ui/react';
-import { Landing, Login, NavigationBar } from './components/exportPages';
+import { Landing, Login, NavigationBar, Leasing} from './components/exportPages';
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
           </div>
         </main>
       </BrowserRouter>
+      <Leasing/>
     </ChakraProvider>
 
   );
