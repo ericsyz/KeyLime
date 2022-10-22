@@ -3,7 +3,7 @@ import { Account} from "./components/exportPages";
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 
 import { ChakraProvider } from '@chakra-ui/react';
-import { Landing, Login, NavigationBar } from './components/exportPages';
+import { Landing, Login, NavigationBar, Footer, Profile } from './components/exportPages';
 
 function App() {
   return (
@@ -15,6 +15,8 @@ function App() {
               <Route path="/" element={<Landing />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Account />} />
+              <Route path="/footer" element={<Footer />} />
+              <Route path="/profile" element={<Profile />} />
             </Routes>
           </div>
         </main>
