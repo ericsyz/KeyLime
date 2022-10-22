@@ -3,7 +3,7 @@ import { Account } from "./components/exportPages";
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 
 import { ChakraProvider } from '@chakra-ui/react';
-import { Landing, Login, NavigationBar, Footer, Profile } from './components/exportPages';
+import { Landing, Login, NavigationBar, Application, Footer, Profile } from './components/exportPages';
 import { AuthProvider } from './components/Authentication/AuthProvider';
 
 function App() {
