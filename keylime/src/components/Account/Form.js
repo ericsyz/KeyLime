@@ -12,7 +12,7 @@ import {
   Button
 } from '@chakra-ui/core';
 
-export default function LoginForm() {
+export default function Form() {
     return (
         <Flex width="full" align="center" justifyContent="center">
         <Box p={1}>
@@ -68,6 +68,33 @@ export default function LoginForm() {
                     <option>No</option>
                 </Select>
               </FormControl>
+              <Divider mt = {4} mb = {2} />
+              <Box p = {1}>
+                <Box textAlign="center">
+                    <Heading fontSize = {20}>Emergency Contact</Heading>
+                </Box>
+              </Box>
+              <FormControl isRequired>
+                <FormLabel fontSize={14}>First name</FormLabel>
+                <Input type="text" placeholder="John" size = "sm"/>
+              </FormControl>
+              <FormControl mt={4} isRequired>
+                <FormLabel fontSize={14}>Last Name</FormLabel>
+                <Input type="text" placeholder="Smith"  size = "sm"/>
+              </FormControl>
+              <FormControl mt={4} isRequired>
+                <FormLabel fontSize={14}>Relationship</FormLabel>
+                <Input type="text" placeholder="Mother"  size = "sm"/>
+              </FormControl>
+              <FormControl mt={4} isRequired>
+                <FormLabel fontSize={14}>Email</FormLabel>
+                <Input type="email" placeholder="John@gatech.edu" size = "sm"/>
+              </FormControl>
+              <FormControl mt={4} isRequired>
+                <FormLabel fontSize={14}>Phone Number</FormLabel>
+                <Input type="tel" placeholder="111-111-1111" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" size = "sm"/>
+              </FormControl>
+
               <Button width="text" mt={4} type="submit">
                 Submit
               </Button>

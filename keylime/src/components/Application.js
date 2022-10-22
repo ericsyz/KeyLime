@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginForm from './Account/Form';
+import Form from './Account/Form';
 import {
   ThemeProvider,
   theme,
@@ -11,7 +11,7 @@ export function Application() {
     <ThemeProvider theme={theme}>
       <ColorModeProvider>
         <CSSReset />
-        <LoginForm />
+        <Form />
       </ColorModeProvider>
     </ThemeProvider>
   );
