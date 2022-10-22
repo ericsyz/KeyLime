@@ -3,13 +3,14 @@ import { Account } from "./components/exportPages";
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 
 import { ChakraProvider } from '@chakra-ui/react';
-import { Landing, Login, NavigationBar, Footer, Profile } from './components/exportPages';
+import { Landing, Login, NavigationBar, Footer, Profile, Application } from './components/exportPages';
 import { AuthProvider } from './components/Authentication/AuthProvider';
 
 function App() {
   return (
     <ChakraProvider>
-      <AuthProvider>
+      <Application></Application>
+      {/* <AuthProvider>
         <BrowserRouter>
           <main>
             <div className="content">
@@ -21,7 +22,7 @@ function App() {
             </div>
           </main>
         </BrowserRouter>
-      </AuthProvider>
+      </AuthProvider> */}
     </ChakraProvider>
   );
 }

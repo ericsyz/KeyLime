@@ -4,3 +4,4 @@ export { Landing } from '../pages/Landing';
 export { Login } from './Account/Login';
 export { Footer } from './Footer/Footer';
 export { Profile } from './Profile';
+export { Application } from './Application';
