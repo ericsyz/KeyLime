@@ -13,12 +13,14 @@ import {
 
 export function Login() {
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const handleEmailChange = (e) => setEmail(e.target.value)
+  const handlePasswordChange = (e) => setPassword(e.target.value);
 
   const emailError = email === ''
+  const passwordError = password === ''
 
-  const [category, setCategory] = useState('')
   //const handlePasswordChange = (e) => setPassword(e.target.value)
   //const isPassError = password === ''
   const [loginEmail, setLoginEmail] = useState("");
