@@ -21,10 +21,6 @@ export function NavigationBar() {
     return (
       <Box
         as="section"
-        /*pb={{
-          base: '12',
-          md: '24',
-        }}*/
       >
         <Box as="nav" bg="bg-surface" boxShadow={useColorModeValue('sm', 'sm-dark')}>
           <Container
@@ -44,7 +40,9 @@ export function NavigationBar() {
                   </ButtonGroup>
                   <HStack spacing="5">
                     <div></div>
-                    <Button variant="ghost">Sign in</Button>
+                    <Button variant="ghost"
+                    
+                    >Sign in</Button>
                     <Button colorScheme='blue'>Sign up</Button>
                   </HStack>
                 </Flex>
