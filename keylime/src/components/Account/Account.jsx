@@ -4,25 +4,31 @@ import { FormHelperText, Input, Text, extendTheme, VStack, FormControl, FormLabe
 import { auth, registerWithEmailAndPassword } from '../../firebase';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
+import { useNavigate } from "react-router-dom";
 
 
 export function Account() {
+  let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState('');;
+  const [birthday, setBirthday] = useState('');
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const handleNameChange = (e) => setName(e.target.value);
+  const handleBirthdayChange = (e) => setBirthday(e.target.value);
 
   const emailError = email === '';
   const passwordError = password === '';
   const nameError = name === '';
+  const birthdayError = birthday === '';
   function register(e) {
     e.preventDefault();
-    registerWithEmailAndPassword(name, email, password)
+    registerWithEmailAndPassword(name, birthday, email, password)
       .then((result) => {
         console.log("Worked!");
+        navigate('/');
       }).catch((error) => {
         console.log(error);
       })
@@ -31,13 +37,21 @@ export function Account() {
   return (
     <VStack spacing={3}>
       <Text fontSize='5xl'>Create an account.</Text>
-      <VStack>
-        <form onSubmit={register}>
-        <FormControl isInvalid={emailError} isRequired>
+      {/* <VStack> */}
+      <form onSubmit={register}>
+        <VStack spacing={3}>
+          <FormControl isInvalid={emailError} isRequired>
             <FormLabel>Name</FormLabel>
             <Input type='email' width='200' value={name} onChange={handleNameChange} />
             {!nameError ? (<FormHelperText>Enter your name.</FormHelperText>) : (
               <FormHelperText color='red'>Invalid name.</FormHelperText>
+            )}
+          </FormControl>
+          <FormControl>
+            <FormLabel>Birthday</FormLabel>
+            <Input type='date' size='sm' value={birthday} onChange={handleBirthdayChange} />
+            {!birthdayError ? (<FormHelperText>Enter your birthdate.</FormHelperText>) : (
+              <FormHelperText color='red'>Invalid birthday.</FormHelperText>
             )}
           </FormControl>
           <FormControl isInvalid={emailError} isRequired>
@@ -55,8 +69,9 @@ export function Account() {
             )}
           </FormControl>
           <Button onClick={register} type='submit' colorScheme='blue'>Submit</Button>
-        </form>
-      </VStack>
+        </VStack>
+      </form>
+      {/* </VStack> */}
 
     </VStack>
   )

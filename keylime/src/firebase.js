@@ -21,14 +21,15 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+export const db = getDatabase(app);
 
-export const registerWithEmailAndPassword = async (name, email, password) => {
+export const registerWithEmailAndPassword = async (name, birthday, email, password) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
     set(ref(db, `/users/${user.uid}`), {
       name: name,
+      birthday: birthday,
       email: email
     });
   } catch (err) {
