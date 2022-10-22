@@ -7,15 +7,19 @@ import { Landing, Login, NavigationBar } from './components/exportPages';
 
 function App() {
   return (
-    <HashRouter>
-      <main>
-        <div className="content">
-          <Routes>
-            <Route path="/" element={<Account />} />
-          </Routes>
-        </div>
-      </main>
-    </HashRouter>
+    <ChakraProvider>
+      <HashRouter>
+        <main>
+          <div className="content">
+            <Routes>
+              <Route path="/" element={<Landing />} />
+            </Routes>
+            <Routes>
+            </Routes>
+          </div>
+        </main>
+      </HashRouter>
+    </ChakraProvider>
   );
 }
 
