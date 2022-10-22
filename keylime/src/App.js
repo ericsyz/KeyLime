@@ -8,9 +8,7 @@ import { Landing, Login, NavigationBar, Application } from './components/exportP
 function App() {
   return (
     <ChakraProvider>
-      <NavigationBar></NavigationBar>
-      <Application />
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <main>
           <div className="content">
             <Routes>
@@ -20,7 +18,7 @@ function App() {
             </Routes>
           </div>
         </main>
-      </BrowserRouter> */}
+      </BrowserRouter>
     </ChakraProvider>
   );
 }
