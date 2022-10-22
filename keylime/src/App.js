@@ -1,14 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
 
 import { ChakraProvider } from '@chakra-ui/react';
+import Landing from './pages/Landing';
 
 function App() {
   return (
     <ChakraProvider>
-        <div className="App" />
+        <Landing />
     </ChakraProvider>
-
   );
 }
 
