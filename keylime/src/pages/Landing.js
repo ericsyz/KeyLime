@@ -1,9 +1,7 @@
-import NavBar from '../components/NavigationBar';
+import { NavigationBar } from '../components/exportPages';
 
-function Landing() { 
+export function Landing() { 
     return (
-        <NavBar></NavBar>
-    );
+        <NavigationBar />
+    )
 }
-
-export default Landing;

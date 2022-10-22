@@ -57,5 +57,3 @@ export function NavigationBar() {
       </Box>
     )
   }
-
-  export default NavigationBar;

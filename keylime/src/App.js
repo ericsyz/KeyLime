@@ -1,12 +1,13 @@
 import './App.css';
 
 import { ChakraProvider } from '@chakra-ui/react';
-import Landing from './pages/Landing';
+import { Landing, Login, NavigationBar } from './components/exportPages';
 
 function App() {
   return (
     <ChakraProvider>
-        <Landing />
+      <NavigationBar />
+        <Login />
     </ChakraProvider>
   );
 }
