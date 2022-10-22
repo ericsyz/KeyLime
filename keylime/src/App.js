@@ -1,6 +1,6 @@
 import './App.css';
 import { Account} from "./components/exportPages";
-import { HashRouter, NavLink, Route, Routes } from "react-router-dom";
+import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 
 import { ChakraProvider } from '@chakra-ui/react';
 import { Landing, Login, NavigationBar } from './components/exportPages';
@@ -8,17 +8,17 @@ import { Landing, Login, NavigationBar } from './components/exportPages';
 function App() {
   return (
     <ChakraProvider>
-      <HashRouter>
+      <BrowserRouter>
         <main>
           <div className="content">
             <Routes>
               <Route path="/" element={<Landing />} />
-            </Routes>
-            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Account />} />
             </Routes>
           </div>
         </main>
-      </HashRouter>
+      </BrowserRouter>
     </ChakraProvider>
   );
 }
