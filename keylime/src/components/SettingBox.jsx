@@ -23,32 +23,32 @@ export function SettingBox() {
                         <VStack spacing={3}>
                         <FormControl isInvalid={emailError}>
                             <FormLabel>Name</FormLabel>
-                            <Input type='name' width='200' value={name}/>
+                            <Input type='name' width='200' style={{border: '1px solid black'}} value={name}/>
                             {!nameError ? (<FormHelperText>{name}</FormHelperText>) : (
                             <FormHelperText color='red'>Invalid name.</FormHelperText>
                             )}
                         </FormControl>
                         <FormControl>
                             <FormLabel>Birthday</FormLabel>
-                            <Input type='date' size='sm' value={birthday}/>
+                            <Input type='date' size='sm' value={birthday} style={{border: '1px solid black'}}/>
                             {!birthdayError ? (<FormHelperText>{birthday}</FormHelperText>) : (
                             <FormHelperText color='red'>Invalid birthday.</FormHelperText>
                             )}
                         </FormControl>
                         <FormControl isInvalid={emailError}>
                             <FormLabel>Email</FormLabel>
-                            <Input type='email' width='200' value={email}/>
+                            <Input type='email' width='200' style={{border: '1px solid black'}} value={email}/>
                             {!emailError ? (<FormHelperText>{email}</FormHelperText>) : (
                             <FormHelperText color='red'>Invalid email.</FormHelperText>
                             )}
                         </FormControl>
-                        <FormControl as='fieldset'>
+                        {/* <FormControl as='fieldset'>
                             <FormLabel>Password</FormLabel>
                             <Input type='text' width='200' value={password} />
                             {!passwordError ? (<FormHelperText>{password}</FormHelperText>) : (
                             <FormHelperText color='red'>Invalid password.</FormHelperText>
                             )}
-                        </FormControl>
+                        </FormControl> */}
                         <Button type='submit' colorScheme='blue'>Submit</Button>
                         </VStack>
                     </VStack>
