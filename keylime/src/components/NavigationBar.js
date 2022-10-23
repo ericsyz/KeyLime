@@ -73,7 +73,7 @@ export function NavigationBar() {
             base: '4',
             lg: '1',
           }}
-          maxWidth = '100%'
+          maxWidth='100%'
         >
           <HStack spacing="10" justify="space-between">
             {/* <Link to='/'> 
@@ -81,16 +81,14 @@ export function NavigationBar() {
                     <img src={require('../newLogo.png')/>
               </div>
             </Link> */}
-            <Button variant='ghost' onClick={() => {navigate('/')}} >
-              <Image src={require('../newLogo.png')} mt={3} width="75" height="75"/>        
+            <Button variant='ghost' onClick={() => { navigate('/') }} >
+              <Image src={require('../newLogo.png')} mt={3} width="75" height="75" />
             </Button>
             {isDesktop ? (
               <Flex justify="space-between" flex="1">
                 <ButtonGroup variant="link" spacing="8">
-                <Button onClick={() => {
-                    if (currentUser) {
-                      navigate('/explore')
-                    }
+                  <Button onClick={() => {
+                    navigate('/explore')
                   }}>Explore</Button>
                   <Button onClick={() => {
                     if (currentUser) {
@@ -100,7 +98,7 @@ export function NavigationBar() {
                     }
                   }}>Action Center</Button>
                 </ButtonGroup>
-                <HStack textAlign = 'right' spacing="5">
+                <HStack textAlign='right' spacing="5">
                   {currentUser && (<Button marginRight='0' variant="ghost" onClick={handleLogOut}>Logout?</Button>)};
                   {!currentUser && (<Button marginRight='0' onClick={handleSignIn} colorScheme="blue">Sign up</Button>)};
                   {!currentUser && (<Button marginRight='0' onClick={handleLogIn} colorScheme='blue'>Sign in</Button>)};
