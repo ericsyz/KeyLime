@@ -39,15 +39,24 @@ export const registerWithEmailAndPassword = async (name, birthday, email, passwo
   }
 };
 
-export const storeNewLease = async (currentUser, phone, address, city, state, zipcode) => {
+export const storeNewLease = async (currentUser, phone, address, city, state, zipcode, price) => {
   try {
-    push(ref(db, `/users/${currentUser.uid}`), {
+    push(ref(db, `/userlease/${currentUser.uid}`), {
         address: address,
         phone: phone,
         city: city,
         state: state,
-        zipcode: zipcode
+        zipcode: zipcode,
+        price: price
     });
+    push(ref(db, `/leases`), {
+      address: address,
+      phone: phone,
+      city: city,
+      state: state,
+      zipcode: zipcode,
+      price: price
+  });
   } catch (err) {
     console.error(err);
     alert(err.message);
