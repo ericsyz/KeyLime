@@ -24,7 +24,6 @@ const app = initializeApp(firebaseConfig);
 export const db = getDatabase(app);
 
 export const registerWithEmailAndPassword = async (name, birthday, email, password) => {
-  try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
     set(ref(db, `/users/${user.uid}`), {
@@ -33,10 +32,8 @@ export const registerWithEmailAndPassword = async (name, birthday, email, passwo
       birthday: birthday,
       email: email
     });
-  } catch (err) {
-    console.error(err);
-    alert(err.message);
-  }
+    // console.error(err);
+    // alert(err.message);
 };
 
 export const storeNewLease = async (currentUser, phone, address, city, state, zipcode, price, profile, property, description) => {
