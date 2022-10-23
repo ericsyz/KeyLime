@@ -9,6 +9,7 @@ import { useState, useContext, useEffect, Modal } from 'react';
 export function Landing() {
     const { currentUser } = useContext(AuthContext);
     const [name, setName] = useState("");
+    const [isLoading, setIsLoading] = useState(true);
     const [loadedLeases, setLeases] = useState([]);
 
     useEffect(() => {
@@ -31,12 +32,20 @@ export function Landing() {
           onValue(star, (snapshot) => {
             snapshot.forEach(c => {
               loadLease.push(c.val());
-              setLeases(loadLease);
             })},
         )
         console.log(loadLease);
-        this.forceUpdate();
+        setIsLoading(false);
+        setLeases(loadLease);
         }, []);
+
+        if (isLoading) {
+            return (
+              <section>
+                <p>Loading...</p>
+              </section>
+            );
+          }
     // useEffect(() => {
     //     fetch(db).then((response) => {
     //         return response.json;
@@ -72,8 +81,8 @@ export function Landing() {
                         <GridItem colSpan={2} bg='#E2E8F0' />
                     </Grid>
                     <Footer />
-                    {loadLease.map((data) => {
-                        <h1>data.address</h1>
+                    {loadedLeases.map((data) => {
+                        return (<h1>{data.address}</h1>);
                     })}
                 </Box>
             )}
