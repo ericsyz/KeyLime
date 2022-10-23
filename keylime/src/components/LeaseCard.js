@@ -1,4 +1,4 @@
-import { Box } from 'react';
+import { Box } from '@chakra-ui/react';
 
 export function LeaseCard(props) {
     return (
