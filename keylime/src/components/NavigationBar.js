@@ -20,7 +20,6 @@ import { auth, db } from '../firebase';
 import { signOut } from 'firebase/auth';
 import { useState, useContext, useEffect } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { useWindowDimensions } from './WindowDimensions';
 
 export function NavigationBar() {
   let navigate = useNavigate();
@@ -55,8 +54,6 @@ export function NavigationBar() {
   function handleLogOut() {
     signOut(auth);
   }
-
-  const { height, width } = useWindowDimensions();
 
   return (
     <Box
