@@ -35,7 +35,7 @@ export function Profile() {
             <VStack>
                 <Box marginTop = {5}>
                     <Avatar size = 'xl'>
-                        <AvatarBadge boxSize='0.8em' bg='green.500' />
+                        <AvatarBadge boxSize='0.8em' bg='green.300' />
                     </Avatar>
                 </Box>
                 <Center>
@@ -46,22 +46,25 @@ export function Profile() {
                 </Center>
                 <List spacing={5}>
                     <ListItem>
-                        <ListIcon as={MdCheckCircle} color='green.500' />
+                        <ListIcon as={MdCheckCircle} color='green.300' />
                         <Button onClick={() => {
                             navigate('/settings', { state: { title: "Personal Info", name: name, email: email, birthday: birthday, password: password } });
                         }}>Personal Info</Button>
                     </ListItem>
                     <ListItem>
-                        <ListIcon as={MdCheckCircle} color='green.500' />
+                        <ListIcon as={MdCheckCircle} color='green.300' />
                         <Button>Messages</Button>
                     </ListItem>
                     <ListItem>
-                        <ListIcon as={MdCheckCircle} color='green.500' />
-                        <Button>Privacy and Security</Button>
+                        <ListIcon as={MdCheckCircle} color='green.300' />
+                        <Button onClick={() => {
+                            navigate('/privacy');
+                        }}
+                        >Privacy and Security</Button>
                     </ListItem>
                     {/* You can also use custom icons from react-icons */}
                     <ListItem>
-                        <ListIcon as={MdSettings} color='green.500' />
+                        <ListIcon as={MdSettings} color='green.300' />
                         <Button>Global Preferences</Button>
                     </ListItem>
                 </List>
