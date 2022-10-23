@@ -93,21 +93,25 @@ export function NavigationBar() {
             base: '4',
             lg: '1',
           }}
+          maxWidth = '100%'
         >
           <HStack spacing="10" justify="space-between">
             <Image src={logo} boxSize='100' />
             {isDesktop ? (
-              <Flex marginRight='0' justify="space-between" flex="1">
+              <Flex justify="space-between" flex="1">
                 <ButtonGroup variant="link" spacing="8">
-                  <Button>Explore</Button>
+                <Button onClick={() => {
+                    if (currentUser) {
+                      navigate('/explore')
+                    }
+                  }}>Explore</Button>
                   <Button onClick={() => {
                     if (currentUser) {
                       navigate('/createlease')
                     }
                   }}>Action Center</Button>
                 </ButtonGroup>
-                <Box style={{width: '1100px'}}></Box>
-                <HStack align='content' spacing="5">
+                <HStack textAlign = 'right' spacing="5">
                   {currentUser && (<Button marginRight='0' variant="ghost" onClick={handleLogOut}>Logout?</Button>)};
                   {!currentUser && (<Button marginRight='0' onClick={handleSignIn} colorScheme="blue">Sign up</Button>)};
                   {!currentUser && (<Button marginRight='0' onClick={handleLogIn} colorScheme='blue'>Sign in</Button>)};

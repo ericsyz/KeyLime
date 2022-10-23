@@ -3,7 +3,7 @@ import { Account } from "./components/exportPages";
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 
 import { ChakraProvider } from '@chakra-ui/react';
-import { Landing, Login, NavigationBar, Footer, Profile, CreateLease } from './components/exportPages';
+import { Landing, Login, NavigationBar, Footer, Profile, CreateLease, SettingBox, Explore } from './components/exportPages';
 import { AuthProvider } from './components/Authentication/AuthProvider';
 
 function App() {
@@ -18,6 +18,8 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Account />} />
                 <Route path="/createlease" element={<CreateLease />} />
+                <Route path="/settings" element={<SettingBox />} />
+                <Route path="/explore" element={<Explore />} />
               </Routes>
             </div>
           </main>

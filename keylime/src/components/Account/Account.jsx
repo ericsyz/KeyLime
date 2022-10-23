@@ -71,8 +71,6 @@ export function Account() {
           <Button onClick={register} type='submit' colorScheme='blue'>Submit</Button>
         </VStack>
       </form>
-      {/* </VStack> */}
-
     </VStack>
   )
 

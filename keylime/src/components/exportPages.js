@@ -7,3 +7,5 @@ export { Profile } from './Profile';
 export { CreateLease } from './Account/CreateLease';
 export { LeaseCard } from './LeaseCard';
 export { LeaseList } from './LeaseList';
+export { SettingBox } from './SettingBox';
+export { Explore } from './Explore';
