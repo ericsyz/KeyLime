@@ -1,5 +1,13 @@
 import React from 'react';
 
+import {
+  ref,
+  getStorage,
+  uploadBytes,
+  getDownloadURL,
+  listAll,
+  list,
+} from "firebase/storage";
 import { Divider } from '@chakra-ui/react';
 import { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../Authentication/AuthProvider';
@@ -15,6 +23,8 @@ import {
   Input,
   Button
 } from '@chakra-ui/react';
+import { MdUploadFile } from 'react-icons/md';
+import { v4 } from "uuid";
 
 export function CreateLease() {
   const [address, setAddress] = useState('');
@@ -23,6 +33,10 @@ export function CreateLease() {
   const [state, setState] = useState('');
   const [zipcode, setZipcode] = useState('');
   const [price, setPrice] = useState('');
+  const [profile, setProfile] = useState('');
+  const [property, setProperty] = useState('');
+  const [description, setDescription] = useState('');
+
 
   const handleAddressChange = (e) => setAddress(e.target.value);
   const handlePhoneChange = (e) => setPhone(e.target.value);
@@ -30,16 +44,17 @@ export function CreateLease() {
   const handleStateChange = (e) => setState(e.target.value);
   const handleZipcodeChange = (e) => setZipcode(e.target.value);
   const handlePriceChange = (e) => setPrice(e.target.value);
+  const handleProfileChange = (e) => setProfile(e.target.value);
+  const handlePropertyChange = (e) => setProperty(e.target.value);
+  const handleDescriptionChange = (e) => setDescription(e.target.value);
+
 
   let navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
 
-
-
-
   function handleSubmit(e) {
     e.preventDefault();
-    storeNewLease(currentUser, phone, address, city, state, zipcode, price)
+    storeNewLease(currentUser, phone, address, city, state, zipcode, price, profile, property, description)
     .then((res) => {
       console.log("Worked!");
       navigate('/');
@@ -63,6 +78,11 @@ export function CreateLease() {
           </Box>
           <Box my={4} textAlign="left">
             <form onSubmit={handleSubmit}>
+            <FormControl mt={4} >
+                <FormLabel fontSize={14}>Profile Picture</FormLabel>
+                <Input value={profile} onChange={handleProfileChange} type="file" size = "sm" accept="image/png, image/gif, image/jpeg" border = "none"/>
+              </FormControl>
+
               <FormControl mt={4} isRequired>
                 <FormLabel fontSize={14}>Phone Number</FormLabel>
                 <Input value={phone} onChange={handlePhoneChange} type="tel" placeholder="111-111-1111" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" size = "sm"/>
@@ -148,6 +168,15 @@ export function CreateLease() {
                 <FormLabel fontSize={14}>Price</FormLabel>
                 <Input value={price} onChange={handlePriceChange} type="number" pattern="[0-9]{5}" size = "sm"/>
               </FormControl>
+              <FormControl mt={4} isRequired>
+                <FormLabel fontSize={14}>Property Description</FormLabel>
+                <Input value={description} onChange={handleDescriptionChange} type="text"/>
+              </FormControl>
+              <FormControl mt={4} isRequired>
+                <FormLabel fontSize={14}>Property Image</FormLabel>
+                <Input value={property} onChange={handlePropertyChange} type="file" size = "sm" accept="image/png, image/gif, image/jpeg" border = "none"/>
+              </FormControl>
+
               <Button width="text" mt={4} type="submit">
                 Submit
               </Button>

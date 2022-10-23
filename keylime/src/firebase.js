@@ -39,7 +39,7 @@ export const registerWithEmailAndPassword = async (name, birthday, email, passwo
   }
 };
 
-export const storeNewLease = async (currentUser, phone, address, city, state, zipcode, price) => {
+export const storeNewLease = async (currentUser, phone, address, city, state, zipcode, price, profile, property, description) => {
   try {
     push(ref(db, `/userlease/${currentUser.uid}`), {
         address: address,
@@ -47,7 +47,10 @@ export const storeNewLease = async (currentUser, phone, address, city, state, zi
         city: city,
         state: state,
         zipcode: zipcode,
-        price: price
+        price: price,
+        profile: profile,
+        property: property,
+        description: description
     });
     push(ref(db, `/leases`), {
       address: address,
@@ -55,7 +58,10 @@ export const storeNewLease = async (currentUser, phone, address, city, state, zi
       city: city,
       state: state,
       zipcode: zipcode,
-      price: price
+      price: price,
+      profile: profile,
+      property: property,
+      description: description
   });
   } catch (err) {
     console.error(err);
