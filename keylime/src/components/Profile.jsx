@@ -53,10 +53,6 @@ export function Profile() {
                     </ListItem>
                     <ListItem>
                         <ListIcon as={MdCheckCircle} color='green.500' />
-                        <Button>Messages</Button>
-                    </ListItem>
-                    <ListItem>
-                        <ListIcon as={MdCheckCircle} color='green.500' />
                         <Button>Privacy and Security</Button>
                     </ListItem>
                     {/* You can also use custom icons from react-icons */}
