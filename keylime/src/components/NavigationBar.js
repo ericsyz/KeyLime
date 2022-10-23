@@ -19,7 +19,8 @@ import { ref, onValue } from 'firebase/database';
 import { auth, db } from '../firebase';
 import { signOut } from 'firebase/auth';
 import { useState, useContext, useEffect } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { LeaseCard } from './exportPages';
 
 export function NavigationBar() {
   let navigate = useNavigate();
@@ -43,6 +44,7 @@ export function NavigationBar() {
     }
   }, [currentUser]);
 
+
   function handleSignIn() {
     navigate('/register');
   }
@@ -54,6 +56,28 @@ export function NavigationBar() {
   function handleLogOut() {
     signOut(auth);
   }
+  
+//   useEffect(() => {
+//     if (currentUser) {
+//         const leases = [];
+//         const star = ref(db, "/leases");
+//         onValue(star, (snapshot) => {
+//             if(snapshot.exists()) {
+//             snapshot.forEach(i => {
+//                 var da = i.val();
+//                 const lea = {
+//                     address: da.address,
+//                     price: da.price,
+//                     city: da.city
+//                 }
+//                 leases.push(lea);
+//             })}
+//         })
+//         setLeases(leases);
+//     }
+
+// }, [currentUser])
+
 
   return (
     <Box
