@@ -22,12 +22,14 @@ export function CreateLease() {
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [zipcode, setZipcode] = useState('');
+  const [price, setPrice] = useState('');
 
   const handleAddressChange = (e) => setAddress(e.target.value);
   const handlePhoneChange = (e) => setPhone(e.target.value);
   const handleCityChange = (e) => setCity(e.target.value);
   const handleStateChange = (e) => setState(e.target.value);
   const handleZipcodeChange = (e) => setZipcode(e.target.value);
+  const handlePriceChange = (e) => setPrice(e.target.value);
 
   let navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
@@ -37,7 +39,7 @@ export function CreateLease() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    storeNewLease(currentUser, phone, address, city, state, zipcode)
+    storeNewLease(currentUser, phone, address, city, state, zipcode, price)
     .then((res) => {
       console.log("Worked!");
       navigate('/');
@@ -141,6 +143,10 @@ export function CreateLease() {
               <FormControl mt={4} isRequired>
                 <FormLabel fontSize={14}>Zip Code</FormLabel>
                 <Input value={zipcode} onChange={handleZipcodeChange} type="number" pattern="[0-9]{5}" size = "sm"/>
+              </FormControl>
+              <FormControl mt={4} isRequired>
+                <FormLabel fontSize={14}>Price</FormLabel>
+                <Input value={price} onChange={handlePriceChange} type="number" pattern="[0-9]{5}" size = "sm"/>
               </FormControl>
               <Button width="text" mt={4} type="submit">
                 Submit
