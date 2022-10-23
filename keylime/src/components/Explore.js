@@ -1,30 +1,68 @@
-import { Grid, VStack, Text, WrapItem, Image, Button, Stack, Box, ButtonGroup, Wrap, Center, ChakraProvider } from '@chakra-ui/react'
-import React, { useState, useEffect } from 'react';
-import { NavigationBar } from './exportPages';
+import { Grid, GridItem, ChakraProvider } from '@chakra-ui/react'
+import React, { useState, useEffect, useContext } from 'react';
+import { AuthContext } from '../components/Authentication/AuthProvider';
+import { NavigationBar, LeaseCard } from './exportPages';
+import { ref, onValue } from 'firebase/database';
+import { db } from '../firebase';
 
 
 export function Explore() {
-    const [houses, setHouses] = useState([
-        {houseName: 'Chic beachhouse', price: '$1200', urlImage: 'https://www.bhg.com/thmb/a-NwJnw4qLipa1EWsJThQyc7Bik=/1280x1280/smart/filters:no_upscale():focal(899x639:901x641)/white-modern-house-curved-patio-archway-c0a4a3b3-aa51b24d14d0464ea15d36e05aa85ac9.jpg'},
-        {houseName: 'Chic beachhouse', price: '$1200', urlImage: 'https://www.bhg.com/thmb/a-NwJnw4qLipa1EWsJThQyc7Bik=/1280x1280/smart/filters:no_upscale():focal(899x639:901x641)/white-modern-house-curved-patio-archway-c0a4a3b3-aa51b24d14d0464ea15d36e05aa85ac9.jpg'},
-        {houseName: 'Chic beachhouse', price: '$1200', urlImage: 'https://www.bhg.com/thmb/a-NwJnw4qLipa1EWsJThQyc7Bik=/1280x1280/smart/filters:no_upscale():focal(899x639:901x641)/white-modern-house-curved-patio-archway-c0a4a3b3-aa51b24d14d0464ea15d36e05aa85ac9.jpg'},
-        {houseName: 'Chic beachhouse', price: '$1200', urlImage: 'https://www.bhg.com/thmb/a-NwJnw4qLipa1EWsJThQyc7Bik=/1280x1280/smart/filters:no_upscale():focal(899x639:901x641)/white-modern-house-curved-patio-archway-c0a4a3b3-aa51b24d14d0464ea15d36e05aa85ac9.jpg'},
-        {houseName: 'Chic beachhouse', price: '$1200', urlImage: 'https://www.bhg.com/thmb/a-NwJnw4qLipa1EWsJThQyc7Bik=/1280x1280/smart/filters:no_upscale():focal(899x639:901x641)/white-modern-house-curved-patio-archway-c0a4a3b3-aa51b24d14d0464ea15d36e05aa85ac9.jpg'},
-        {houseName: 'Chic beachhouse', price: '$1200', urlImage: 'https://www.bhg.com/thmb/a-NwJnw4qLipa1EWsJThQyc7Bik=/1280x1280/smart/filters:no_upscale():focal(899x639:901x641)/white-modern-house-curved-patio-archway-c0a4a3b3-aa51b24d14d0464ea15d36e05aa85ac9.jpg'},
-        {houseName: 'Chic beachhouse', price: '$1200', urlImage: 'https://www.bhg.com/thmb/a-NwJnw4qLipa1EWsJThQyc7Bik=/1280x1280/smart/filters:no_upscale():focal(899x639:901x641)/white-modern-house-curved-patio-archway-c0a4a3b3-aa51b24d14d0464ea15d36e05aa85ac9.jpg'},
-        {houseName: 'Chic beachhouse', price: '$1200', urlImage: 'https://www.bhg.com/thmb/a-NwJnw4qLipa1EWsJThQyc7Bik=/1280x1280/smart/filters:no_upscale():focal(899x639:901x641)/white-modern-house-curved-patio-archway-c0a4a3b3-aa51b24d14d0464ea15d36e05aa85ac9.jpg'}
-    ])
+    const { currentUser } = useContext(AuthContext);
+    const [name, setName] = useState("");
+    const [isLoading, setIsLoading] = useState(true);
+    const [loadedLeases, setLeases] = useState([]);
+
+    useEffect(() => {
+        if (currentUser) {
+            const starCountRef = ref(db, "users/" + currentUser.uid);
+            onValue(starCountRef, (snapshot) => {
+                if (snapshot.exists()) {
+                    var data = snapshot.val();
+                    setName(data.name);
+                }
+            });
+        }
+    }, [currentUser]);
+
+
+    var loadLease = [];
+    useEffect(() => {
+    loadLease = [];
+    const star = ref(db, "leases/");
+        onValue(star, (snapshot) => {
+        snapshot.forEach(c => {
+            loadLease.push(c.val());
+        })},
+    )
+    console.log(loadLease);
+    setIsLoading(false);
+    setLeases(loadLease);
+    }, []);
+
+    if (isLoading) {
+        return (
+            <section>
+            <p>Loading...</p>
+            </section>
+        );
+    }
+    const cards = [];
+    {loadedLeases.map((data) => {
+        cards.push(<LeaseCard address={data.address} city={data.city} price={data.price}/>)
+    })}
     return (
         <ChakraProvider>
             <NavigationBar />
-                <div className='house-list'>
-                    {houses.map((house, index) => (
-                        <Button variant='ghost' mb={75} mt={75} ml={20} >
-                            <input type="image" src="https://www.bhg.com/thmb/a-NwJnw4qLipa1EWsJThQyc7Bik=/1280x1280/smart/filters:no_upscale():focal(899x639:901x641)/white-modern-house-curved-patio-archway-c0a4a3b3-aa51b24d14d0464ea15d36e05aa85ac9.jpg" name="submit" width="210" height="150" alt="submit"/>
-                        </Button>
-                ))}
-            </div>
+            <Grid h = '500px' templateColumns='repeat(5, 1fr)' templateRows='repeat(2, 1fr)' gap={6}>
+                
+                    {loadedLeases.map((data) => {
+                        return (
+                            <GridItem>
+                                <LeaseCard address={data.address} city={data.city} price={data.price}/>
+                            </GridItem>
+                        )
+                    })}
+            </Grid>
         </ChakraProvider>
-            
-        )
+    )
 }
