@@ -5,4 +5,3 @@ export { Login } from './Account/Login';
 export { Footer } from './Footer/Footer';
 export { Profile } from './Profile';
 export { CreateLease } from './Account/CreateLease';
-export { useWindowDimensions } from './WindowDimensions';
