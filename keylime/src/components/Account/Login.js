@@ -49,6 +49,8 @@ export function Login() {
     }
 
     return (
+        <div>
+            <NavigationBar />
         <VStack spacing={3}>
             <Text fontSize='5xl'>Log into your account</Text>
             <VStack>
@@ -82,6 +84,6 @@ export function Login() {
                 <Text color='red'>Invalid email and password combination.</Text>
             )}
         </VStack>
-
+        </div>
     )
 }
