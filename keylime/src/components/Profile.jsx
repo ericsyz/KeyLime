@@ -53,10 +53,6 @@ export function Profile() {
                     </ListItem>
                     <ListItem>
                         <ListIcon as={MdCheckCircle} color='green.300' />
-                        <Button>Messages</Button>
-                    </ListItem>
-                    <ListItem>
-                        <ListIcon as={MdCheckCircle} color='green.300' />
                         <Button onClick={() => {
                             navigate('/privacy');
                         }}
