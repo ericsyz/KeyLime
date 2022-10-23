@@ -2,7 +2,7 @@
 import { useRangeSlider } from "@chakra-ui/react";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { ref, set, getDatabase } from "firebase/database";
+import { ref, set, getDatabase, push } from "firebase/database";
 
 import { createUserWithEmailAndPassword } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -28,6 +28,7 @@ export const registerWithEmailAndPassword = async (name, birthday, email, passwo
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
     set(ref(db, `/users/${user.uid}`), {
+      uid: user.uid,
       name: name,
       birthday: birthday,
       email: email
@@ -37,4 +38,29 @@ export const registerWithEmailAndPassword = async (name, birthday, email, passwo
     alert(err.message);
   }
 };
+
+export const storeNewLease = async (currentUser, phone, address, city, state, zipcode, price) => {
+  try {
+    push(ref(db, `/userlease/${currentUser.uid}`), {
+        address: address,
+        phone: phone,
+        city: city,
+        state: state,
+        zipcode: zipcode,
+        price: price
+    });
+    push(ref(db, `/leases`), {
+      address: address,
+      phone: phone,
+      city: city,
+      state: state,
+      zipcode: zipcode,
+      price: price
+  });
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+};
+
 export const auth = getAuth(app)
