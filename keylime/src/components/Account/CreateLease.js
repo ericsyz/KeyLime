@@ -1,18 +1,10 @@
 import React from 'react';
-
-import {
-  ref,
-  getStorage,
-  uploadBytes,
-  getDownloadURL,
-  listAll,
-  list,
-} from "firebase/storage";
 import { Divider } from '@chakra-ui/react';
 import { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../Authentication/AuthProvider';
 import { storeNewLease } from '../../firebase';
 import { useNavigate } from "react-router-dom";
+import { NavigationBar } from '../NavigationBar';
 import {
   Flex,
   Box,
@@ -23,8 +15,6 @@ import {
   Input,
   Button
 } from '@chakra-ui/react';
-import { MdUploadFile } from 'react-icons/md';
-import { v4 } from "uuid";
 
 export function CreateLease() {
   const [address, setAddress] = useState('');
@@ -33,8 +23,10 @@ export function CreateLease() {
   const [state, setState] = useState('');
   const [zipcode, setZipcode] = useState('');
   const [price, setPrice] = useState('');
+
   const [profile, setProfile] = useState('');
   const [property, setProperty] = useState('');
+
   const [description, setDescription] = useState('');
 
 
@@ -46,6 +38,7 @@ export function CreateLease() {
   const handlePriceChange = (e) => setPrice(e.target.value);
   const handleProfileChange = (e) => setProfile(e.target.value);
   const handlePropertyChange = (e) => setProperty(e.target.value);
+
   const handleDescriptionChange = (e) => setDescription(e.target.value);
 
 
@@ -64,7 +57,10 @@ export function CreateLease() {
     })
   }
 
+
     return (
+      <div>
+        <NavigationBar/>
         <Flex width="full" align="center" justifyContent="center">
         <Box p={1}>
           <Box textAlign="center">
@@ -184,5 +180,6 @@ export function CreateLease() {
           </Box>
         </Box>
       </Flex>
+      </div>
       );
   }

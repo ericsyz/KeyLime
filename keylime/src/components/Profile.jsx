@@ -61,6 +61,7 @@ export function Profile() {
                             navigate('/privacy');
                         }}
                         >Privacy and Security</Button>
+
                     </ListItem>
                     {/* You can also use custom icons from react-icons */}
                     <ListItem>

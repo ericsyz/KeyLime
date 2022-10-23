@@ -1,6 +1,6 @@
-import { ChakraProvider, Grid, GridItem, Box } from "@chakra-ui/react";
+import { ChakraProvider, Grid, GridItem, Box, Container } from "@chakra-ui/react";
 import { React } from "react";
-import { NavigationBar, Footer, Profile, LeaseList } from "../components/exportPages"
+import { NavigationBar, Footer, Profile, LeaseList, LeaseCard } from "../components/exportPages"
 import { AuthContext } from '../components/Authentication/AuthProvider';
 import { ref, onValue } from 'firebase/database';
 import { db } from '../firebase';
@@ -11,7 +11,9 @@ export function Landing() {
     const [name, setName] = useState("");
     const [isLoading, setIsLoading] = useState(true);
     const [loadedLeases, setLeases] = useState([]);
+    const [loadedUserLeases, setUserLeases] = useState([]);
 
+    var loadUserLease = [];
     useEffect(() => {
         if (currentUser) {
             const starCountRef = ref(db, "users/" + currentUser.uid);
@@ -22,30 +24,53 @@ export function Landing() {
                 }
             });
         }
+        if (currentUser) {
+            const usa = ref(db, "userlease/" + currentUser.uid);
+            onValue(usa, (snapshot) => {
+                snapshot.forEach(c => {
+                    loadUserLease.push(c.val());
+                })
+            },
+            )
+        }
+        setUserLeases(loadUserLease);
     }, [currentUser]);
 
 
-      var loadLease = [];
-      useEffect(() => {
+    var loadLease = [];
+
+    useEffect(() => {
         loadLease = [];
+        loadUserLease = [];
         const star = ref(db, "leases/");
-          onValue(star, (snapshot) => {
+        onValue(star, (snapshot) => {
             snapshot.forEach(c => {
-              loadLease.push(c.val());
-            })},
+                loadLease.push(c.val());
+            })
+        },
         )
+        if (currentUser) {
+            const usa = ref(db, "userlease/" + currentUser.uid);
+            onValue(usa, (snapshot) => {
+                snapshot.forEach(c => {
+                    loadUserLease.push(c.val());
+                })
+            },
+            )
+        }
         console.log(loadLease);
         setIsLoading(false);
         setLeases(loadLease);
-        }, []);
+        setUserLeases(loadUserLease);
+    }, []);
 
-        if (isLoading) {
-            return (
-              <section>
+    if (isLoading) {
+        return (
+            <section>
                 <p>Loading...</p>
-              </section>
-            );
-          }
+            </section>
+        );
+    }
     // useEffect(() => {
     //     fetch(db).then((response) => {
     //         return response.json;
@@ -77,13 +102,18 @@ export function Landing() {
                         <GridItem rowSpan={1} colSpan={1} bg='#E2E8F0'>
                             <Profile />
                         </GridItem>
-                        <GridItem colSpan={2} bg='#E2E8F0' />
-                        <GridItem colSpan={2} bg='#E2E8F0' />
+                        <GridItem overflowY='scroll' colSpan={2} bg='#E2E8F0'>
+                            {loadedLeases.map((data) => {
+                                return (<LeaseCard address={data.address} city={data.city} price={data.price} />);
+                            })}
+                        </GridItem>
+                        <GridItem overflowY='scroll' className="usersLease" colSpan={2} bg='#E2E8F0'>
+                            {loadedUserLeases.map((data) => {
+                                return (<LeaseCard address={data.address} city={data.city} price={data.price} />);
+                            })}
+                        </GridItem>
                     </Grid>
                     <Footer />
-                    {loadedLeases.map((data) => {
-                        return (<h1>{data.address}</h1>);
-                    })}
                 </Box>
             )}
             {!currentUser && (
@@ -93,7 +123,11 @@ export function Landing() {
                         <GridItem rowSpan={1} colSpan={1} bg='#E2E8F0' >
                             <Profile />
                         </GridItem>
-                        <GridItem colSpan={2} bg='#E2E8F0' />
+                        <GridItem overflowY='scroll' colSpan={2} bg='#E2E8F0'>
+                            {loadedLeases.map((data) => {
+                                return (<LeaseCard address={data.address} city={data.city} price={data.price} />);
+                            })}
+                        </GridItem>
                         <GridItem colSpan={2} bg='#E2E8F0' />
                     </Grid>
                     <Footer />
