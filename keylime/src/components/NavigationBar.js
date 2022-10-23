@@ -10,6 +10,10 @@ import {
   useColorModeValue,
   Spacer,
   Text,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
 } from '@chakra-ui/react'
 import * as React from 'react';
 import logo from '../logo.svg';
@@ -76,10 +80,12 @@ export function NavigationBar() {
             {isDesktop ? (
               <Flex justify="space-between" flex="1">
                 <ButtonGroup variant="link" spacing="8">
-                  <Button>Explore</Button>
+                  <Button onClick={() => {navigate('/explore')}}>Explore</Button>
                   <Button onClick={() => {
                     if (currentUser) {
                       navigate('/createlease')
+                    } else {
+                      alert("Unable to access Action Center unless you are logged in")
                     }
                   }}>Action Center</Button>
                 </ButtonGroup>
