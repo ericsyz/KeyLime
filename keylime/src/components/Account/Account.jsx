@@ -25,13 +25,17 @@ export function Account() {
   const birthdayError = birthday === '';
   function register(e) {
     e.preventDefault();
-    registerWithEmailAndPassword(name, birthday, email, password)
+    if (!emailError && !passwordError && !nameError && !birthdayError) {
+      registerWithEmailAndPassword(name, birthday, email, password)
       .then((result) => {
         console.log("Worked!");
         navigate('/');
       }).catch((error) => {
         console.log(error);
+        alert(error);
       })
+    }
+
   }
 
   return (
