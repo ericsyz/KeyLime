@@ -6,3 +6,4 @@ export { Application } from './Application';
 export { Footer } from './Footer/Footer';
 export { Profile } from './Profile';
 export { Leasing } from './Leasing';
+export { Explore } from './Explore';
