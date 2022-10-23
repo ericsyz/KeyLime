@@ -1,14 +1,17 @@
-import { React } from "react";
+import { React, Navigate } from "react";
 import { Avatar, AvatarBadge, VStack, Center, Box, Text, List, ListItem, ListIcon, Button} from '@chakra-ui/react';
 import { MdCheckCircle, MdSettings } from 'react-icons/md'
 import { AuthContext } from './Authentication/AuthProvider';
 import { ref, onValue } from 'firebase/database';
 import { db } from '../firebase';
 import { useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function Profile() {
     const { currentUser } = useContext(AuthContext);
     const [name, setName] = useState("");
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (currentUser) {
@@ -38,7 +41,9 @@ export function Profile() {
                 <List spacing={5}>
                     <ListItem>
                         <ListIcon as={MdCheckCircle} color='green.500' />
-                        <Button>Personal Info</Button>
+                        <Button onClick={() => {
+                            navigate('/settings', { state: { title: "Personal Info", uid: currentUser.uid } });
+                        }}>Personal Info</Button>
                     </ListItem>
                     <ListItem>
                         <ListIcon as={MdCheckCircle} color='green.500' />

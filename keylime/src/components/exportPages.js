@@ -4,5 +4,6 @@ export { Landing } from '../pages/Landing';
 export { Login } from './Account/Login';
 export { Footer } from './Footer/Footer';
 export { Profile } from './Profile';
-export { Explore } from './Explore';
 export { CreateLease } from './Account/CreateLease';
+export { SettingBox } from './SettingBox';
+export { Explore } from './Explore';
