@@ -74,10 +74,6 @@ export function CreateLease() {
           </Box>
           <Box my={4} textAlign="left">
             <form onSubmit={handleSubmit}>
-            <FormControl mt={4} >
-                <FormLabel fontSize={14}>Profile Picture</FormLabel>
-                <Input value={profile} onChange={handleProfileChange} type="file" size = "sm" accept="image/png, image/gif, image/jpeg" border = "none"/>
-              </FormControl>
 
               <FormControl mt={4} isRequired>
                 <FormLabel fontSize={14}>Phone Number</FormLabel>
@@ -104,7 +100,7 @@ export function CreateLease() {
                 <FormLabel fontSize={14}>State</FormLabel>
                 <Select value={state} onChange={handleStateChange} placeholder='Select'>
                   <option value="AL">Alabama</option>
-	                <option value="AK">Alaska</option>
+                  <option value="AK">Alaska</option>
                   <option value="AZ">Arizona</option>
                   <option value="AR">Arkansas</option>
                   <option value="CA">California</option>
