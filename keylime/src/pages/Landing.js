@@ -102,7 +102,11 @@ export function Landing() {
                         <GridItem rowSpan={1} colSpan={1} bg='#E2E8F0'>
                             <Profile />
                         </GridItem>
-                        <GridItem colSpan={2} bg='#E2E8F0' />
+                        <GridItem overflowY='scroll' colSpan={2} bg='#E2E8F0'>
+                            {loadedLeases.map((data) => {
+                                return (<LeaseCard address={data.address} city={data.city} price={data.price} />);
+                            })}
+                        </GridItem>
                         <GridItem overflowY='scroll' className="usersLease" colSpan={2} bg='#E2E8F0'>
                             {loadedUserLeases.map((data) => {
                                 return (<LeaseCard address={data.address} city={data.city} price={data.price} />);
