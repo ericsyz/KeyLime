@@ -1,4 +1,4 @@
-import { ChakraProvider, Grid, GridItem, Box, Container } from "@chakra-ui/react";
+import { ChakraProvider, Grid, GridItem, Box, Heading, Divider, Container } from "@chakra-ui/react";
 import { React } from "react";
 import { NavigationBar, Footer, Profile, LeaseList, LeaseCard } from "../components/exportPages"
 import { AuthContext } from '../components/Authentication/AuthProvider';
@@ -103,11 +103,19 @@ export function Landing() {
                             <Profile />
                         </GridItem>
                         <GridItem overflowY='scroll' colSpan={2} bg='#E2E8F0'>
+                            <Box>
+                                <Heading margin = '10px'>Interesting Opportunities For You!</Heading>
+                                <Divider borderWidth = '2px' borderColor = '#2F855A' marginBottom = '10px'></Divider>
+                            </Box>
                             {loadedLeases.map((data) => {
                                 return (<LeaseCard address={data.address} city={data.city} price={data.price} />);
                             })}
                         </GridItem>
                         <GridItem overflowY='scroll' className="usersLease" colSpan={2} bg='#E2E8F0'>
+                            <Box>
+                                <Heading margin = '10px'>Your Leases</Heading>
+                                <Divider borderWidth = '2px' borderColor = '#2F855A' marginBottom = '10px'></Divider>
+                            </Box>
                             {loadedUserLeases.map((data) => {
                                 return (<LeaseCard address={data.address} city={data.city} price={data.price} />);
                             })}
