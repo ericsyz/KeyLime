@@ -8,8 +8,8 @@ import {
   IconButton,
   useBreakpointValue,
   useColorModeValue,
-  Spacer,
-  Text,
+  Link,
+  Route
 } from '@chakra-ui/react'
 import * as React from 'react';
 import logo from '../logo.svg';
@@ -80,7 +80,7 @@ export function NavigationBar() {
 
 
   return (
-    <Box
+    <Box mt={3} mb={3}
       as="section"
     /*pb={{
       base: '12',
@@ -96,7 +96,14 @@ export function NavigationBar() {
           maxWidth = '100%'
         >
           <HStack spacing="10" justify="space-between">
-            <Image src={logo} boxSize='100' />
+            {/* <Link to='/'> 
+              <div>
+                    <img src={require('../newLogo.png')/>
+              </div>
+            </Link> */}
+            <Button variant='ghost' onClick={() => {navigate('/')}} >
+              <Image src={require('../newLogo.png')} mt={3} width="75" height="75"/>        
+            </Button>
             {isDesktop ? (
               <Flex justify="space-between" flex="1">
                 <ButtonGroup variant="link" spacing="8">
@@ -108,6 +115,8 @@ export function NavigationBar() {
                   <Button onClick={() => {
                     if (currentUser) {
                       navigate('/createlease')
+                    } else {
+                      alert("Unable to access Action Center unless you are logged in")
                     }
                   }}>Action Center</Button>
                 </ButtonGroup>
