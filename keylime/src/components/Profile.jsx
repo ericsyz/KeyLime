@@ -12,6 +12,7 @@ export function Profile() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [birthday, setBirthday] = useState("");
+    const [password, setPassword] = useState("");
 
     const navigate = useNavigate();
 
@@ -24,6 +25,7 @@ export function Profile() {
               setName(data.name);
               setEmail(data.email);
               setBirthday(data.birthday)
+              setPassword(data.password)
             }
           });
         }
@@ -46,7 +48,7 @@ export function Profile() {
                     <ListItem>
                         <ListIcon as={MdCheckCircle} color='green.500' />
                         <Button onClick={() => {
-                            navigate('/settings', { state: { title: "Personal Info", name: name, email: email, birthday: birthday } });
+                            navigate('/settings', { state: { title: "Personal Info", name: name, email: email, birthday: birthday, password: password } });
                         }}>Personal Info</Button>
                     </ListItem>
                     <ListItem>
