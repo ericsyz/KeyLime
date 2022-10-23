@@ -1,6 +1,6 @@
 import { ChakraProvider, Grid, GridItem, Box } from "@chakra-ui/react";
 import { React } from "react";
-import { NavigationBar, Footer, Profile, LeaseList } from "../components/exportPages"
+import { NavigationBar, Footer, Profile, LeaseList, LeaseCard } from "../components/exportPages"
 import { AuthContext } from '../components/Authentication/AuthProvider';
 import { ref, onValue } from 'firebase/database';
 import { db } from '../firebase';
@@ -82,7 +82,7 @@ export function Landing() {
                     </Grid>
                     <Footer />
                     {loadedLeases.map((data) => {
-                        return (<h1>{data.address}</h1>);
+                        return (<LeaseCard address={data.address} city={data.city} price={data.price}/>);
                     })}
                 </Box>
             )}
