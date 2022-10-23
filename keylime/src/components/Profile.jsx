@@ -42,7 +42,7 @@ export function Profile() {
                     </ListItem>
                     <ListItem>
                         <ListIcon as={MdCheckCircle} color='green.500' />
-                        <Button>Notifications</Button>
+                        <Button>Messages</Button>
                     </ListItem>
                     <ListItem>
                         <ListIcon as={MdCheckCircle} color='green.500' />
