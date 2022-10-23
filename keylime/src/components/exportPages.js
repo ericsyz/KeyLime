@@ -6,3 +6,4 @@ export { Footer } from './Footer/Footer';
 export { Profile } from './Profile';
 export { CreateLease } from './Account/CreateLease';
 export { SettingBox } from './SettingBox';
+export { Explore } from './Explore';
