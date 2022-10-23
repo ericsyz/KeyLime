@@ -56,27 +56,7 @@ export function NavigationBar() {
   function handleLogOut() {
     signOut(auth);
   }
-  
-//   useEffect(() => {
-//     if (currentUser) {
-//         const leases = [];
-//         const star = ref(db, "/leases");
-//         onValue(star, (snapshot) => {
-//             if(snapshot.exists()) {
-//             snapshot.forEach(i => {
-//                 var da = i.val();
-//                 const lea = {
-//                     address: da.address,
-//                     price: da.price,
-//                     city: da.city
-//                 }
-//                 leases.push(lea);
-//             })}
-//         })
-//         setLeases(leases);
-//     }
 
-// }, [currentUser])
 
 
   return (
