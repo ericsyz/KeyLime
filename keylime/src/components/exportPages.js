@@ -10,3 +10,4 @@ export { LeaseList } from './LeaseList';
 export { SettingBox } from './SettingBox';
 export { Explore } from './Explore';
 export { Privacy_Security } from './Privacy_Security';
+export { About } from './About';

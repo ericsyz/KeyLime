@@ -62,7 +62,10 @@ export function Profile() {
                     {/* You can also use custom icons from react-icons */}
                     <ListItem>
                         <ListIcon as={MdSettings} color='green.300' />
-                        <Button>Global Preferences</Button>
+                        <Button onClick={() => {
+                            navigate('/about');
+                        }}
+                        >About</Button>
                     </ListItem>
                 </List>
             </VStack>
