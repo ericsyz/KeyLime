@@ -76,7 +76,11 @@ export function NavigationBar() {
             {isDesktop ? (
               <Flex justify="space-between" flex="1">
                 <ButtonGroup variant="link" spacing="8">
-                  <Button>Explore</Button>
+                <Button onClick={() => {
+                    if (currentUser) {
+                      navigate('/explore')
+                    }
+                  }}>Explore</Button>
                   <Button onClick={() => {
                     if (currentUser) {
                       navigate('/createlease')
